@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}Add Food{% endblock %}
+
+{% block body %}
+<div class="card mt-5">
+    <div class="card-header">
+      June 5, 2022
+    </div>
+    <div class="card-body">
+        <div class="mt-2 mb-5 g-col-8">
+            <form method="post" action="{{ url_for('food')}}">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" name="food-name" placeholder="Enter name of food">
+                    <label for="floatingInput">Food Name</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="floatingInput" name="protein" placeholder="name@example.com">
+                    <label for="floatingInput">Protien</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="floatingInput" name="carbohydrates" placeholder="name@example.com">
+                    <label for="floatingInput">Carbohydrates</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="floatingInput" name="fat" placeholder="name@example.com">
+                    <label for="floatingInput">Fat</label>
+                  </div>
+                <button type="submit" class="btn btn-primary mt-3">Add</button>
+            </form>
+        </div>
+        <table class="table align-middle">
+            <thead>
+                <tr>
+                    <th class="col-2">Name</th>
+                    <th class="col-2">Protein</th>
+                    <th class="col-2">Carbohydrates</th>
+                    <th class="col-2">Fat</th>
+                    <th class="col-2">Calories</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                {% for food in result %}
+                <tr>
+                    <th>{{ food.name }}</th>
+                    <th>{{ food.protein }}</th>
+                    <th>{{ food.carbohydrates }}</th>
+                    <th>{{ food.fat }}</th>
+                    <th>{{ food.calories }}</th>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock body %}

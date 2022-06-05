@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block body %}
+
+<div class="mt-5 g-col-12">
+    <form action="/" method="POST">
+        <div class="mb-1">
+            <label for="date-input"><b>New Date</b></label>
+        </div>
+        <div class="mb-3">
+            <input class="form-control" type="text" name="date">
+        </div>
+        <button type="submit" class="btn btn-primary mb-3">Add</button>
+    </form>
+</div>
+
+{% for r in result %}
+<div class="card mt-4">
+    <div class="card-header">
+      {{ r.entry_date }}
+    </div>
+    <div class="card-body">
+        <table class="table align-middle">
+            <thead>
+                <tr>
+                    <th class="col-3">Protein</th>
+                    <th class="col-3">Carbohydrates</th>
+                    <th class="col-3">Fat</th>
+                    <th class="col-3">Calories</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                <tr>
+                    <th>{{r.protein}}</th>
+                    <th>{{r.carbohydrates}}</th>
+                    <th>{{r.fat}}</th>
+                    <th>{{r.calories}}</th>
+                </tr>
+            </tbody>
+        </table>
+        <a href="{{ url_for('view', date=r.date)}}" class="btn btn-primary">View</a>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock body %}
